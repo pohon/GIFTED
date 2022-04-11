@@ -17,12 +17,10 @@ function App() {
           <Link to="/trendings">Trendings</Link>
         </nav>
       </header>
-      <body>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="trendings" element={<Trendings />} />
-        </Routes>
-      </body>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="trendings" element={<Trendings />} />
+      </Routes>
     </div>
   );
 }
