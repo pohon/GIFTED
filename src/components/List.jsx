@@ -1,14 +1,18 @@
 import useSWR from 'swr'
-import fetcher from '../../../helper/fetcher';
+import fetcher from '../helper/fetcher';
 
-const List = ({ searchTerm }) => {
-  
+const List = ({ searchTerm, endpoint }) => {
+
+  // props
+  const shouldFetch = !!searchTerm;
+
+  // states
   const { data } = useSWR(
-    `https://api.giphy.com/v1/gifs/search?api_key=5pz3ijoel9TP8PVJPb0SDND5kdXihPyc&limit=50&q=${searchTerm}`,
+    shouldFetch ? `${endpoint}?api_key=5pz3ijoel9TP8PVJPb0SDND5kdXihPyc&limit=50&q=${searchTerm}` : null,
     fetcher
   );
 
-  if (!data) {
+  if (shouldFetch && !data) {
     return <div>loading...</div>
   }
   
